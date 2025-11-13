@@ -1,11 +1,452 @@
-@import 'tailwindcss';
+/* ============================
+   HOME – LAYOUT GENERAL
+============================ */
 
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
-@source '../**/*.blade.php';
-@source '../**/*.js';
+.home-body {
+    margin: 0;
+    font-family: system-ui, sans-serif;
+    background: linear-gradient(120deg, #3b0764, #b91c1c, #be185d);
+    min-height: 100vh;
+    color: #fff;
+}
 
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+.layout {
+    display: flex;
+}
+
+/* ============================
+   SIDEBAR
+============================ */
+
+.sidebar {
+    width: 230px;
+    min-height: 100vh;
+    background: linear-gradient(180deg, rgba(15,23,42,0.8), rgba(76,29,149,0.9));
+    padding: 20px 16px;
+    box-sizing: border-box;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 28px;
+}
+
+.sidebar-logo-circle {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: radial-gradient(circle at top left, #f97316, #ec4899, #8b5cf6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar-header h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+}
+.sidebar-header p {
+    margin: 0;
+    font-size: 11px;
+    opacity: .8;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-menu li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: 14px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #e5e7eb;
+    margin-bottom: 6px;
+    transition: background .2s, transform .1s;
+}
+
+.sidebar-menu li span:first-child {
+    width: 20px;
+    text-align: center;
+}
+
+.sidebar-menu li.active,
+.sidebar-menu li:hover {
+    background: linear-gradient(90deg, #ec4899, #a855f7);
+    color: #fff;
+    transform: translateX(2px);
+}
+
+/* ============================
+   PANEL PRINCIPAL
+============================ */
+
+.main-panel {
+    margin-left: 230px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 230px);
+}
+
+/* TOPBAR */
+
+.topbar {
+    padding: 14px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topbar-title h1 {
+    margin: 0;
+    font-size: 22px;
+}
+.topbar-title p {
+    margin: 0;
+    font-size: 12px;
+    opacity: .8;
+}
+
+.topbar-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(15,23,42,.6);
+}
+
+.user-initial {
+    width: 30px;
+    height: 30px;
+    border-radius: 999px;
+    background: #ec4899;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.user-info small {
+    font-size: 11px;
+    opacity: .8;
+}
+
+/* CONTENIDO */
+
+.content {
+    padding: 10px 32px 40px;
+}
+
+/* ============================
+   BANNER
+============================ */
+
+.home-banner {
+    background: linear-gradient(90deg, #0ea5e9, #ec4899, #f97316);
+    border-radius: 22px;
+    padding: 22px 26px;
+    margin-bottom: 26px;
+}
+
+.banner-badge {
+    display: inline-block;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(15,23,42,.35);
+    margin-bottom: 6px;
+}
+
+.home-banner h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 800;
+}
+.home-banner p {
+    margin: 4px 0 12px 0;
+    font-size: 13px;
+}
+
+.btn-banner {
+    border: none;
+    border-radius: 999px;
+    padding: 9px 18px;
+    background: #fff;
+    color: #1d4ed8;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+/* ============================
+   PRODUCTOS
+============================ */
+
+.section-block {
+    margin-top: 10px;
+}
+
+.section-title {
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 18px;
+}
+
+.product-card {
+    background: #fff;
+    color: #111827;
+    border-radius: 18px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 12px 30px rgba(15,23,42,.35);
+}
+
+.discount-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #ef4444;
+    color: #fff;
+    font-size: 11px;
+    padding: 4px 8px;
+    border-radius: 999px;
+}
+
+.product-image {
+    width: 100%;
+    height: 420px;
+    background-repeat: no-repeat;
+    background-size: contain;   /* cambia cover → contain */
+    background-position: center;
+
+}
+
+/* Puedes cambiar estas URLs por tus imágenes */
+.img-1 {
+    background-image: url('https://promart.vteximg.com.br/arquivos/ids/8717756/imageUrl_1.jpg?v=638782221604070000');
+}
+.img-2 {
+    background-image: url('https://m.media-amazon.com/images/I/71XZFOsggtL.jpg');
+}
+
+.product-body {
+    padding: 14px 16px 12px;
+}
+
+.product-category {
+    font-size: 11px;
+    color: #22c55e;
+    font-weight: 700;
+}
+
+.product-description {
+    font-size: 12px;
+    color: #6b7280;
+    margin: 4px 0 10px;
+}
+
+.product-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price-now {
+    font-size: 18px;
+    font-weight: 800;
+    color: #ec4899;
+}
+
+.price-old {
+    font-size: 14px;
+    text-decoration: line-through;
+    color: #9ca3af;
+    margin-left: 4px;
+}
+
+.btn-small {
+    border: none;
+    border-radius: 999px;
+    padding: 6px 14px;
+    background: linear-gradient(90deg, #ec4899, #a855f7);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+/* Botón DS en la esquina superior derecha */
+.user-menu {
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    z-index: 1000;
+      /* que quede por encima de todo */
+}
+
+
+.user-btn {
+    width: 45px;
+    height: 45px;
+    background: #d44afc;
+    color: white;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.user-btn:hover {
+    transform: scale(1.08);
+}
+
+/* MENÚ DESPLEGABLE DEL BOTÓN DS */
+.dropdown-user {
+    position: absolute;
+    top: 60px;      /* Aparece debajo del círculo DS */
+    right: 0;       /* Alineado al borde derecho del círculo */
+    background: white;
+    border-radius: 10px;
+    padding: 10px 0;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+    display: none;
+    width: 160px;
+    z-index: 9999;
+}
+
+
+
+.dropdown-user a {
+    display: block;
+    padding: 12px 15px;
+    color: #333;
+    text-decoration: none;
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+.dropdown-user a:hover {
+    background: #f1f1f1;
+}
+.topbar-user {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Botón redondo DS */
+.user-initial {
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    border: none;
+    background: linear-gradient(135deg, #ec4899, #6366f1);
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Dropdown */
+.user-dropdown {
+    position: absolute;
+    top: 52px;      /* debajo del botón */
+    right: 0;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 12px 25px rgba(15, 23, 42, 0.16);
+    padding: 8px 0;
+    min-width: 180px;
+    display: none;  /* oculto por defecto */
+    z-index: 50;
+}
+
+.user-dropdown a {
+    display: block;
+    padding: 8px 14px;
+    font-size: 14px;
+    color: #374151;
+    text-decoration: none;
+}
+
+.user-dropdown a:hover {
+    background: #f3f4f6;
+}
+
+/* ===== CONTENEDOR DEL DROPDOWN ===== */
+.user-dropdown {
+    position: absolute;
+    top: 60px;
+    right: 15px;
+    width: 180px;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 8px 0;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    display: none;
+    flex-direction: column;
+    animation: dropdownFade 0.18s ease-out;
+    overflow: hidden; /* EVITA BORDES CORTADOS */
+    z-index: 999;
+}
+
+/* Animación */
+@keyframes dropdownFade {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== OPCIONES DEL DROPDOWN ===== */
+.user-dropdown a,
+.user-dropdown button.logout-btn {
+    padding: 14px 18px;
+    font-size: 14px;
+    color: #444;
+    text-decoration: none;
+    background: #ffffff;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.15s ease-in-out;
+}
+
+/* Hover */
+.user-dropdown a:hover,
+.user-dropdown button.logout-btn:hover {
+    background: #f3f4f6;
+    color: #111;
+}
+
+/* Logout en rojo */
+.logout-btn {
+    color: #d32f2f;
+    font-weight: 500;
+}
+
+.logout-btn:hover {
+    background: rgba(211, 47, 47, 0.1);
+    color: #b71c1c;
 }
